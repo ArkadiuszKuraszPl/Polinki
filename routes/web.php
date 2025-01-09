@@ -17,7 +17,9 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::group(['middleware' => ['role:user|admin']], function () {
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
+    });
 });
 
 Route::get('/', function () {
