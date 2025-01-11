@@ -24,4 +24,22 @@ class UserController extends Controller
                 ->with('error', $e->getMessage());
         }
     }
+
+    /**
+     * Wyświetla listę wszystkich użytkowników.
+     */
+    public function index()
+    {
+        $users = User::all(); // Pobranie wszystkich użytkowników
+        return view('user.index', compact('user'));
+    }
+
+    /**
+     * Wyświetla profil użytkownika na podstawie slug.
+     */
+    public function show($slug)
+    {
+        $user = User::where('slug', $slug)->firstOrFail(); // Znalezienie użytkownika po slug
+        return view('user.show', compact('user'));
+    }
 }

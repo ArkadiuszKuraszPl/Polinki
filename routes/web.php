@@ -29,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/{user}/edit-name', function (User $user) {
         return view('user.edit', ['user' => $user]);
     });
+    Route::get('/user', [UserController::class, 'index'])->name('user.index'); // Lista użytkowników
+    Route::get('/{slug}', [UserController::class, 'show'])->name('user.show'); // Profil użytkownika
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

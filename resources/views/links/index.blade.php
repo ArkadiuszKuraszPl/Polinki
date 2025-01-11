@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <a href="{{ route('user.show', $user->slug) }}" class="btn btn-success">User Profile</a>
+
         <a href="{{ url('/user/' . $user->id . '/edit-name') }}" class="btn btn-secondary">Edit Name</a>
 
         <a href="{{ route('links.create') }}" class="btn btn-primary">Dodaj link</a>
