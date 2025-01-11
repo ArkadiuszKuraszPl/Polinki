@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/links', [LinkController::class, 'index'])->name('links.index');
     Route::get('/links/create', [LinkController::class, 'create'])->name('links.create');
     Route::post('/links', [LinkController::class, 'store'])->name('links.store');
+
+    Route::post('/user/{user}/update-name', [UserController::class, 'updateName']);
+    Route::get('/user/{user}/edit-name', function (User $user) {
+        return view('user.edit', ['user' => $user]);
+    });
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
