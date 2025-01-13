@@ -5,6 +5,9 @@
     <h1>Profile: {{ $user->name }}</h1>
     <p><strong>Email:</strong> {{ $user->email }}</p>
     <p><strong>Slug:</strong> {{ $user->slug }}</p>
-    <a href="{{ url('links') }}" class="btn btn-secondary">Back to Community</a>
+
+    @foreach ($links as $link)
+        <p><strong>Link:</strong> {{ $link->url }}</p>        
+    @endforeach
 </div>
 @endsection

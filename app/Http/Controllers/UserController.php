@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,8 @@ class UserController extends Controller
     public function show($slug)
     {
         $user = User::where('slug', $slug)->firstOrFail(); // Znalezienie użytkownika po slug
-        return view('user.show', compact('user'));
+        return view('user.show', [
+            'links' => Link::where('user_id', auth()->id())->get(),
+        ], compact('user'));
     }
 }

@@ -17,6 +17,11 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -30,19 +35,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('user.edit', ['user' => $user]);
     });
     Route::get('/user', [UserController::class, 'index'])->name('user.index'); // Lista użytkowników
-    Route::get('/{slug}', [UserController::class, 'show'])->name('user.show'); // Profil użytkownika
+    Route::get('/{slug}', [UserController::class, 'show'])
+    ->where('slug', '[a-zA-Z0-9\-]+') // Warunek dla sluga
+    ->name('user.show');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::group(['middleware' => ['role:user|admin']], function () {
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::group(['middleware' => ['role:user|admin']], function () {
 
-    });
-});
+//     });
+// });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes(['verify' => true]);
 
 
