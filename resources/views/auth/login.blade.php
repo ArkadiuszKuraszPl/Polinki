@@ -19,10 +19,24 @@
         height: 100vh;
     }
 
+    @media(max-width: 900px) {
+        .container {
+            grid-template-columns: 1fr;
+        }
+    }
+
     .form_container {
         position: relative;
         top: 0;
         left: 0;
+    }
+
+    @media(max-width: 900px) {
+        .form_container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
     }
 
     .form {
@@ -31,6 +45,36 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 400px;
+        padding: 25px;
+        margin-top: 15px;
+        border-radius: 6px;
+    }
+
+    @media(max-width: 900px) {
+        .form {
+            background-color: #ffffffff;
+            z-index: 1000;
+            margin-top: 0;
+            box-shadow: 0 0 40px 5px rgba(33, 0, 36, 0.4);
+        }
+    }
+
+    @media(max-width: 500px) {
+        .form {
+            max-width: 350px;
+        }
+    }
+
+    @media(max-width: 410px) {
+        .form {
+            max-width: 280px;
+        }
+    }
+
+    @media(max-width: 340px) {
+        .form {
+            max-width: 240px;
+        }
     }
 
     .form_title {
@@ -42,8 +86,10 @@
         margin-top: 20px;
     }
 
-    .form {
-        padding: 30px;
+    @media(max-width: 500px) {
+        img {
+            max-width: 90%;
+        }
     }
 
     .form_title p {
@@ -55,19 +101,24 @@
         margin-top: 20px;
     }
 
-    .info_container {
-        background: rgb(181,0,217);
-        background: linear-gradient(30deg, rgba(181,0,217,1) 0%, rgba(121,8,242,1) 85%); 
-    }
-
-    form {
-        margin-top: 15px;
+    @media(max-width: 500px) {
+        .form_title p {
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+        }
     }
 
     form input {
         width: 100%;
         border: 1px solid #ccc;
         margin-top: 5px;
+        background-color: #fff;
+        transition: 0.3s;
+    }
+
+    form input:hover,
+    form input:focus {
+        border: 1px solid #999;
     }
 
     form input,
@@ -87,7 +138,6 @@
         transition: 0.3s;
         font-weight: 500;
         width: 100%;
-
     }
 
     form button:hover {
@@ -96,11 +146,26 @@
         background-color: rgba(121,8,242,1);
     }
 
-
     .info_container {
+        background-image: url('images/background_auth.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    @media(max-width: 900px) {
+        .info_container img {
+            display: none;
+        }
+    }
+
+    .bcg {
         position: relative;
         top: 0;
         left: 0;
+        background: rgb(181,0,217);
+        background: linear-gradient(30deg, rgba(181,0,217,0.7) 0%, rgba(62,0,128,0.8) 85%);
+        height: 100vh;
     }
 
     .info {
@@ -190,8 +255,10 @@
     </div>
 
     <div class="info_container">
-        <div class="info">
-            <img src="{{ asset('images/logo_polinki_white.svg') }}" alt="Logo Polinki - Agregator Linków" class="logo_white">
+        <div class="bcg">
+            <div class="info">
+                <img src="{{ asset('images/logo_polinki_white.svg') }}" alt="Logo Polinki - Agregator Linków" class="logo_white">
+            </div>
         </div>
     </div>
 </div>
