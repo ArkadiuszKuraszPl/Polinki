@@ -47,7 +47,7 @@ class LinkController extends Controller
             'url' => $request->url,
             'title' => $request->title,
             'description' => $request->description,
-            'age_restricted' => $request->age_restricted ?? 0, // Domyślnie 0, jeśli nie zaznaczono
+            'age_restricted' => $request->age_restricted ?? 0,
         ]);
 
         return redirect()->route('links.index');

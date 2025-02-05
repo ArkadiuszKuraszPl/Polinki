@@ -42,7 +42,7 @@ class UserController extends Controller
     {
         $user = User::where('slug', $slug)->firstOrFail(); // Znalezienie użytkownika po slug
         return view('user.show', [
-            'links' => Link::where('user_id', auth()->id())->get(),
+            'links' => Link::where('user_id', $user->id)->get(),
         ], compact('user'));
     }
 }

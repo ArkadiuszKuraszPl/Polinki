@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <a href="{{ route('links.create') }}" class="btn btn-primary">Dodaj link</a>
+
         <div class="col-md-8">
             <form action="{{ route('links.store') }}" method="POST">
                 @csrf
